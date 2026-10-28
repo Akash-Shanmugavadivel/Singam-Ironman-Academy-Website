@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Singam Ironman Academy Website
 
-## Getting Started
+A Next.js website for marathon runner and academy founder Sivabalan Singam. It presents the academy, running programs, achievements, events, gallery, and shop, with Supabase-backed content actions.
 
-First, run the development server:
+## Site sections
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Home and about pages
+- Academy and running information
+- Achievements, events, and photo gallery
+- Shop and contact pages
+- Running pace calculator
+- Admin and dashboard pages for managing site content
+
+## Technology
+
+- Next.js 16 App Router, React 19, and TypeScript
+- Supabase JavaScript client for database and storage integration
+- Tailwind CSS 4
+- Framer Motion and Lucide React
+
+## Requirements
+
+- Node.js compatible with Next.js 16
+- npm
+- A Supabase project with the tables and storage bucket used by the app
+
+## Configure Supabase
+
+Create a `.env.local` file in the project root with the public project URL and anon key:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The client configuration is in `lib/supabaseClient.ts`. Content actions use the `events`, `gallery`, `leads`, `products`, and `achievements` tables, and image uploads use the `portfolio-images` storage bucket. Configure the required database schema, bucket, and Supabase Row Level Security policies in your Supabase project before using those features.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Run locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+## Other commands
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm run start
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+- `app/` — pages, layouts, and server actions
+- `app/actions/` — Supabase actions for events, gallery, leads, shop, achievements, and dashboard data
+- `components/` — navigation, footer, hero, cards, and shared UI
+- `lib/` — Supabase client, upload helper, and shared types/utilities
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy as a Next.js application and configure the same Supabase environment variables in the hosting provider. This repository does not document a current live deployment URL.
